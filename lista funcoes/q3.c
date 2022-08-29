@@ -5,14 +5,14 @@ usuário e imprimir o fatorial dele, ou se não é possível calcular o fatorial
 
 #include <stdio.h>
 
-int fatorial(int num){
-
-  int fat=1;
-
-  for( ; num>=1; num-- ) {
-
-         fat=fat*num;
-         
+int fatorial(int n)
+{
+  
+  int fat;
+  
+  for(fat = 1; n > 1; n = n - 1)
+    { 
+      fat = fat * n;
     }
     return fat;
 }
@@ -31,6 +31,6 @@ int v1,resultado;
     printf("numero menor que 0");
   }
   else 
-    printf("o fatorial eh= %d",fatorial);
+    printf("o fatorial eh= %d",resultado);
   
 }
