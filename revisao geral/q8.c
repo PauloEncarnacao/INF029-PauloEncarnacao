@@ -1,9 +1,6 @@
-/*8. 
-Criar programa que leia dados de 20 elementos inteiros. imprimir o maior
-e o menor, sem ordenar, o percentual de números pares e a media dos
-elementos do vetor.*/
 
-#/*7.
+
+/*8.
 Criar programa que leia dois conjuntos de números inteiros, tendo cada
 um 10 e 20 elementos e apresente os elementos comuns aos conjuntos.
 lembre-se de que os elementos podem se repetir mas não podem aparecer
