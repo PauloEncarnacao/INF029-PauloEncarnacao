@@ -28,11 +28,12 @@ int c1[9],c2[19];
 	{
 		if (c1[k]==c2[k])//numeros iguais entre os conjuntos
 		{
-			cont= cont+c1[k];
-			printf("os numeros comeuns entre os conjuntos sao =%d\n",cont);
+			cont= cont+c2[k];
+			printf("os numeros comuns entre os conjuntos sao =%d\n",cont);
 			cont=0;	
 		}
 	}
+	
   return 0;
 }
 
