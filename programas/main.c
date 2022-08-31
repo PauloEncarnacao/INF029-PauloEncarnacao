@@ -38,14 +38,14 @@ int cep;
   int mes;
   int ano;
   */
-}cad_cliente[2];
+}cad_cliente[1];
 
 
 int main ()
 {
 
 
-for (int i=0;i<3;i++) //entrada de dados
+for (int i=0;i<2;i++) //entrada de dados
   {
 
 printf("\n=====Entrada de Dados====");
@@ -53,10 +53,10 @@ printf("\nDADOS DO CLIENTE");
 
 printf("\nNome do cliente.................");
 fflush(stdin);//limpar buff do teclar o "enter"
-gets(cad_cliente[i].nome_cliente);
+fgets(cad_cliente[i].nome_cliente,40,stdin);
 
 
-printf("\nDigite o telefone do cliente");
+printf("\nDigite o telefone do cliente.......");
 scanf("%d",&cad_cliente[i].telefone);
 
 printf("\nDia do nascimento.........");
@@ -73,7 +73,7 @@ printf("\nENDERECO DO CLIENTE");
 
 printf("\nDigite a rua.........");
 fflush(stdin);//limpar buff do teclado
-gets(cad_cliente[i].endereco.rua);
+fgets(cad_cliente[i].endereco.rua,40,stdin);
 
 
 printf("\nDigite o numero......");
@@ -81,25 +81,25 @@ scanf("%d",&cad_cliente[i].endereco.numero);
 
 printf("\nDigite o bairro......");
 fflush(stdin);
-gets(cad_cliente[i].endereco.bairro);
+fgets(cad_cliente[i].endereco.bairro,40,stdin);
 
 printf("\nDigite a cidade.......");
 fflush(stdin);
-gets(cad_cliente[i].endereco.cidade);
+fgets(cad_cliente[i].endereco.cidade,40,stdin);
 
 printf("\nDigite o estado....");
 fflush(stdin);
-gets(cad_cliente[i].endereco.estado);
+fgets(cad_cliente[i].endereco.estado,20,stdin);
 
 printf("\nDigite o cep.....");
 scanf("%d",&cad_cliente[i].endereco.cep);
 
   }
 
-for(int i=1; i<=3; i++ )//saida de dados
+for(int i=0; i<2; i++ )//saida de dados
 
 {
-printf("\nNOME DO CLIENTE %d = %s\n",i,cad_cliente[i].nome_cliente);	
+printf("\nNOME DO CLIENTE  = %s\n",cad_cliente[i].nome_cliente);	
 printf("TELEFONE DO CLIENTE\n",cad_cliente[i].telefone);
 printf("data de nascimento: %d/%d/%d\n",cad_cliente[i].data_nascimento.dia, cad_cliente[i].data_nascimento.mes,cad_cliente[i].data_nascimento.ano);
 
