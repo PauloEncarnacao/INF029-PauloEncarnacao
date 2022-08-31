@@ -4,7 +4,6 @@ Criar programa que leia e armazena os elementos de uma matriz M inteira
 impares.*/
 
 
-
 #include <stdio.h>
 #include <string.h>
 
@@ -29,10 +28,11 @@ for(i=0; i<TAM; i++)
 	{
 	if(j%2==0 && i%2!=0) 
 	{
-	printf("[%d",matriz[i][j]);
+	printf("[%d ",matriz[i][j]);
 	}
 	
-	}	
+	}
+  printf("\n")
 }
 
 return 0;

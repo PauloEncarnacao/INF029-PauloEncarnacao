@@ -10,29 +10,40 @@ repetidos na saída*/
 int main ()
 
 {
-int c1[9],c2[19];
+int c1[9],c2[19],c3[19];
 
-  for (int i=0; i<10; i++)
+  for (int i=0; i<=10; i++)
     {
   printf("insira o elemento do primeiro conjunto = ");
   scanf("%d",&c1[i]);
     }
 
-  for (int j=0; j<20; j++)
+  for (int j=0; j<=20; j++)
     {
   printf("insira o elemento do segundo conjunto = ");
   scanf("%d",&c2[j]);
 	}
+
+  
 	int cont=0;
-	for(int k=0; k<19; k++)
+  
+	for(int k=0; k<=20; k++)
 	{
-		if (c1[k]==c2[k])//numeros iguais entre os conjuntos
-		{
-			cont= cont+c2[k];
-			printf("os numeros comuns entre os conjuntos sao =%d\n",cont);
-			cont=0;	
+    for(int i=0; i<=10; i++)
+      {
+        if (c2[k]==c1[i])//numeros iguais entre os conjuntos
+        {
+          c3[cont]=c1[i];
+          break;
+          }
+		
 		}
-	}
+      }
+		
+	for(int i=0; i<=10; i++)
+    {
+      printf("%d ",c3[i]);
+    }
 	
   return 0;
 }

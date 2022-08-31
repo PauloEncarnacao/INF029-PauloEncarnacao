@@ -35,8 +35,7 @@ printf("media do aluno=%.2f  \n",alunos[i].media);
 
       }
       
-   for (int j=0; j<15; j++)
-   {
+   
      
      printf("o aluno %s\n",alunos[j].nome);
      printf("obteve a media = %.2f\n",alunos[j].media);
@@ -44,9 +43,9 @@ printf("media do aluno=%.2f  \n",alunos[i].media);
      {
      
      printf("aprovado");     
- }
+   }
  
- else
+   else
  printf("reprovado");
    }   
       

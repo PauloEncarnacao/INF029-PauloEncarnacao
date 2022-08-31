@@ -15,17 +15,18 @@ int main (){
 int vet[TAM];
 int i;
 int maior,menor;
- int contador=0;
-  int cont2=0;
+  
+   int contador=0;
+   int cont2=0;
   
 for(i=0; i<TAM; i++)
 {
     scanf("%d",&vet[i]);
-     cont2=cont2+i;
+     cont2=cont2+vet[i];
   
-  if(i%2==0)//encontrar quantidade numeros pares
+  if(vetor[i]%2==0)//encontrar quantidade numeros pares
 	{
-	contador=contador+1; 
+    contador=contador+1; 
 	}
 }
 int porcentagem=(contador*100)/TAM;

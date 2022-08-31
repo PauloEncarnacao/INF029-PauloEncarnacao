@@ -25,7 +25,7 @@ int main()
   scanf("%d",&pessoa[i].idade);
       getchar();
 
-      if(pessoa[i].nome[0]=='L' || 'M' || 'N'|| 'O'|| 'P'|| 'Q' || 'R'|| 'S')
+      if(pessoa[i].nome[0]>=78 && pessoa[i].nome[0] <=83 ||pessoa[i].nome[0]>=108 && pessoa[i].nome[0] <=115  )
         {
         printf("%s",pessoa[i].nome);
         }
