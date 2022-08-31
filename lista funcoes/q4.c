@@ -6,13 +6,13 @@ para fazer o retorno.*/
 #include <stdio.h>
 
 struct tres_numeros{
-    int vetor[1];
+    int vetor[2];
 }numero;
 
 int ler_3_numeros(int num )
 {
    //capturando os dados
-   for(int i=0 ;i<2; i++)
+   for(int i=0 ;i<3; i++)
    {
     printf("Digite o valor dos numeros");
     scanf("%d",&numero.vetor[i]);
@@ -31,7 +31,7 @@ int main()
 {
     
     int reposta=ler_3_numeros();
-     for(int i=0; i<2; i++)
+     for(int i=0; i<3; i++)
      {
          printf("%d\n",resposta);
      }
