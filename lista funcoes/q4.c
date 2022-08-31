@@ -4,3 +4,26 @@ para fazer o retorno.*/
 
 #include <stdio.h>
 
+
+struct ler3numeros{
+  
+int  vetor[2];
+  
+  }numero;
+}
+
+  
+int main(){
+  
+for(int i=0; i<3; i++)
+  {
+   printf("digite um elemento");
+    scanf("%d",numero[i].vetor);
+  }
+for(int i=0; i<3; i++)
+  {
+ printf("numeros digitados %d\n",numero[i].vetor);    
+  }
+  
+  return 0;
+}
