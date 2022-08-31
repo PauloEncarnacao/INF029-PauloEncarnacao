@@ -18,7 +18,6 @@ int main()
   if (numero[i]%2==0)
   {
     printf("%d",numero[i]);
-    c
   }
 
   
