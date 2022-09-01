@@ -33,7 +33,7 @@ int main()
    
     quatro_numero mostra= ler_4_numeros();
     
-    for(int i=0; i<3; i++)
+    for(int i=0; i<4; i++)
     {
         printf("%d",mostra.vetor[i]);   
         
