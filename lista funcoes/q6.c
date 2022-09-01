@@ -7,6 +7,7 @@ e retornar as três letras. A função main deve imprimir essas três letras.*/
 typedef struct{
   
   char letra[3];
+  
 }letras;
 
 
@@ -16,7 +17,8 @@ letras ler_tres_letras()
   
   for(int i=0; i<3; i++)
     {
-  printf("Informe uma letra\n ");
+  
+    printf("Informe uma letra\n ");
    scanf(" %c",&entrada.letra[i]);
       }
       

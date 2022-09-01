@@ -8,7 +8,7 @@ imprimir os dados do cliente.
 #include <stdio.h>
 
 
-typedef struct c{
+typedef struct{
  
     char nome[20]; 
    char  nascimento[20]; 
