@@ -5,39 +5,40 @@ para fazer o retorno.*/
 
 #include <stdio.h>
 
-struct tres_numeros{
-    int vetor[2];
-}numero;
+ typedef struct{
+    int vetor[3];
+} tres_numero;
 
-int ler_3_numeros(int num )
+tres_numero ler_3_numeros()
 {
+
+  tres_numero num;
    //capturando os dados
    for(int i=0 ;i<3; i++)
    {
     printf("Digite o valor dos numeros");
-    scanf("%d",&numero.vetor[i]);
-   }
-     //imprimindo os dados 
-   for(int i=0; i<2; i++)
+    scanf("%d",&num.vetor[i]);
+   }     //imprimindo os dados 
+   /*
+  for(int i=0; i<1; i++)
    {
-    printf("Digite o valor dos numeros %d\n",numero.vetor[i]);
+    printf("valores digitados %d\n",num.vetor[i]);
    }
+   */
    
-   
-    return numero;
+    return num;
 }
 
 int main()
 {
+   
+    tres_numero mostra= ler_3_numeros();
     
-    int reposta=ler_3_numeros();
-     for(int i=0; i<3; i++)
-     {
-         printf("%d\n",resposta);
-     }
-    
-    
+    for(int i=0; i<3; i++)
+    {
+        printf("%d",mostra.vetor[i]);   
+        
+    }
+
     return 0;
 }
-
-
