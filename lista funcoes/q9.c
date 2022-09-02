@@ -10,6 +10,7 @@ masculino; f e F para feminino, o e O para outro).
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "funcoes.h"
 
 
 typedef struct{
@@ -18,41 +19,46 @@ typedef struct{
     char  nascimento[20]; 
     char cpf[20];
     char sexo[20];
+    int valido;
         
  
 }cadastro;
 
-cadastro validar_nome(){
-
-  char maximo[20];
-  if(cliente.nome>maximo)
-  {
-    printf("MAIS DE 20 CARACTERES EXCEDIDO");
-    return false;
-  }
-  else 
-    true;
+int valida_nome (char nome[])
+{
+  int tam = strlen(nome);
+  if (tam < 3 || tam > 20)
+    return 0;
+  else
+    return 1;
 }
-
-  return 
 
 cadastro cadastro_cliente(){
 
     cadastro cliente;
+    cliente.valido = 0;
 
     printf("\n-----> CADASTRO DE CLIENTE <-----\n");
     printf("Digite o nome do cliente:\n");
     fflush(stdin);
     fgets(cliente.nome, 20, stdin);
-    printf("Digite o CPF do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.cpf,20, stdin);
-    printf("Digite a data de nascimento do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.nascimento, 20, stdin);
-    printf("Digite o sexo do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.sexo, 20, stdin);    
+
+    if (valida_nome(cliente.nome) == 1){
+      printf("Digite o CPF do cliente:\n");
+      fflush(stdin);
+      fgets(cliente.cpf,20, stdin);
+      printf("Digite a data de nascimento do cliente:\n");
+      fflush(stdin);
+      fgets(cliente.nascimento, 20, stdin);
+      printf("Digite o sexo do cliente:\n");
+      fflush(stdin);
+      fgets(cliente.sexo, 20, stdin);    
+      cliente.valido = 1;
+    }else {
+      printf ("O nome tem que ter mais de 3 caracteres e até 20");
+    }
+  
+    
     
     return cliente;
 }
@@ -60,6 +66,10 @@ cadastro cadastro_cliente(){
  int main(){
 
   cadastro result = cadastro_cliente();
+
+   if (cliente.valido == 0){
+     //nao foi possivel fazer o cadastro
+   }
 
   printf("nome do cliente...%s",result.nome);
   printf("CPF do cliente...%s",result.cpf);

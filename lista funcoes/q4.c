@@ -3,42 +3,30 @@ usuário e retornar os três números. A função main deve imprimir esses três
 para fazer o retorno.*/
 
 
+
 #include <stdio.h>
 
- typedef struct{
-    int vetor[3];
-} tres_numero;
-
-tres_numero ler_3_numeros()
-{
-
-  tres_numero num;
-   //capturando os dados
-   for(int i=0 ;i<3; i++)
-   {
-    printf("Digite o valor dos numeros");
-    scanf("%d",&num.vetor[i]);
-   }     //imprimindo os dados 
-   /*
-  for(int i=0; i<1; i++)
-   {
-    printf("valores digitados %d\n",num.vetor[i]);
-   }
-   */
-   
-    return num;
+void ler_tres_numero(int numero[]){
+    
+    
+  
+  for(int i=0; i<3; i++)
+    {
+     printf("digite os numeros");
+     scanf("%d",&numero[i]);
+    }   
 }
 
 int main()
 {
-   
-    tres_numero mostra= ler_3_numeros();
+    
+    
+    int vetor[3];
+    ler_tres_numero(vetor);
     
     for(int i=0; i<3; i++)
     {
-        printf("%d",mostra.vetor[i]);   
-        
+    printf("%d",vetor[i]);
     }
-
     return 0;
 }
