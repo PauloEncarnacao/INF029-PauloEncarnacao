@@ -3,6 +3,7 @@ validação deve ser feita em uma função diferente, conforme lista abaixo. A f
 deve chamar cada uma dessas funções. A função main deve imprimir se o cadastro foi realizado
 com sucesso ou se houve erro, informando onde foi o erro:
 • função validarNome: recebe o nome digitado, e valida se nome tem até 20 caracteres;
+
 • função validarSexo: recebe o sexo digitado, e valida é um sexo válido (opções: m e M para
 masculino; f e F para feminino, o e O para outro).
 • função validarCPF: recebe o cpf digitado, e valida é um cpf válido;
@@ -10,55 +11,108 @@ masculino; f e F para feminino, o e O para outro).
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "funcoes.h"
 
 
 typedef struct{
- 
+
+    data_nascimento nascimento;
     char nome[20]; 
-    char  nascimento[20]; 
     char cpf[20];
     char sexo[20];
-    int valido;
-        
+    data_nascimento dia;
+    
+    
  
 }cadastro;
 
-int valida_nome (char nome[])
-{
-  int tam = strlen(nome);
-  if (tam < 3 || tam > 20)
-    return 0;
-  else
-    return 1;
-}
 
+typedef struct{
+
+  int dia;
+  int mes;
+  int ano;
+}data_nascimento;
+
+int validar_nome(char nome_inserido[]){
+
+
+  int i=0;
+   int cont_caracters;
+
+  while(nome_inserido[i]!='\0')
+    {
+      cont_caracters++;
+    }
+  cont_caracters=cont_caracters-1;
+
+  if(cont_caracters>20)
+  {
+    printf("o numero maximo de caracters eh igual a 20");
+
+    return 1;
+  }
+  else{
+    return 0;
+  }
+  
+  }
+int validar_cpf(char cpf_inserido[]){
+
+  int i=0;
+  int cont_caracters;
+
+  while(cpf_inserido[i]!='\0')
+    {
+      cont_caracters++;
+    }
+  cont_caracters=cont_caracters-1;
+
+  if(cont_caracters>11)
+  {
+    printf("o numero maximo de caracters eh igual a 11");
+
+    return 1;
+  }
+  else{
+    return 0;
+  }
+  
+  }
+int validar_sexo(char sexo_inserido[]){
+    
+    if(sexo_inserido=='M'|| sexo_inserido=='m'|| sexo_inserido=='F'|| sexo_inserido=='M' )
+    {
+        return 1;
+    }
+    
+    else
+    printf("!!!sexo invalido!!!");
+    return 0;
+}   
+  
+  
+  
 cadastro cadastro_cliente(){
 
     cadastro cliente;
-    cliente.valido = 0;
 
     printf("\n-----> CADASTRO DE CLIENTE <-----\n");
     printf("Digite o nome do cliente:\n");
     fflush(stdin);
     fgets(cliente.nome, 20, stdin);
-
-    if (valida_nome(cliente.nome) == 1){
-      printf("Digite o CPF do cliente:\n");
-      fflush(stdin);
-      fgets(cliente.cpf,20, stdin);
-      printf("Digite a data de nascimento do cliente:\n");
-      fflush(stdin);
-      fgets(cliente.nascimento, 20, stdin);
-      printf("Digite o sexo do cliente:\n");
-      fflush(stdin);
-      fgets(cliente.sexo, 20, stdin);    
-      cliente.valido = 1;
-    }else {
-      printf ("O nome tem que ter mais de 3 caracteres e até 20");
-    }
-  
+    validar_nome(cliente.nome);
+    //chamando função que valida nome
+  printf("Digite o CPF do cliente:\n");
+    fflush(stdin);
+    fgets(cliente.cpf,20, stdin);
+    validar_cpf(cliente.cpf);
+   //chamando função que valida cpf
+  printf("Digite a data de nascimento do cliente:ddmmaaaa\n"); scanf("%d%d%d",&cliente.nascimento.dia,&cliente.nascimento.mes,&cliente.nascimento.ano);
     
+  printf("Digite o sexo do cliente:\n");
+    fflush(stdin);
+    fgets(cliente.sexo, 20, stdin);    
+    validar_sexo(cliente.sexo);//chamando funcao que valida sexo
     
     return cliente;
 }
@@ -66,10 +120,6 @@ cadastro cadastro_cliente(){
  int main(){
 
   cadastro result = cadastro_cliente();
-
-   if (cliente.valido == 0){
-     //nao foi possivel fazer o cadastro
-   }
 
   printf("nome do cliente...%s",result.nome);
   printf("CPF do cliente...%s",result.cpf);
