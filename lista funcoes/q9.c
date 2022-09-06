@@ -9,123 +9,101 @@ masculino; f e F para feminino, o e O para outro).
 • função validarCPF: recebe o cpf digitado, e valida é um cpf válido;
 • função validarNacimento: recebe o data digitada, e valida é uma data válida.*/
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 typedef struct{
-
-    data_nascimento nascimento;
-    char nome[20]; 
-    char cpf[20];
-    char sexo[20];
-    data_nascimento dia;
-    
-    
- 
-}cadastro;
-
+  int dia,mes,ano;
+}data_de_nascimento;
 
 typedef struct{
+  char nome[40];
+  char cpf[15];
+  char sexo;
+  data_de_nascimento nascimento;
+}cliente;
 
-  int dia;
-  int mes;
-  int ano;
-}data_nascimento;
+
+cliente cadastro_cliente();//protótipo da função
+int validar_nome(char nome_inserido[]);//protótipo função
+
+int main(){
+
+  cliente saida=cadastro_cliente();
+
+    printf("\nNOME = %s\n",saida.nome);
+    printf(" CPF = %s\n",saida.cpf);
+    printf("SEXO = %c\n",saida.sexo);
+    printf("data de nascimento %d/%d/%d\n",saida.nascimento.dia,saida.nascimento.mes,saida.nascimento.ano);
+
+  
+}
+
+cliente cadastro_cliente(){
+  
+  cliente cadastro;//declaro a variavel cadastro do tipo cliente
+
+    printf("DIGITE O NOME DO CLIENTE");
+    fflush(stdin);
+    fgets(cadastro.nome,40,stdin);
+
+    //inserir nome e validar:aceitar até 20 caracteres 
+    
+    while(validar_nome(cadastro.nome)==0)//se o retorno for 1, continuar com o cpf
+    {
+    printf("DIGITE O NOME DO CLIENTE NOVAMENTE COM ATE 20 CARACTERES");
+    fflush(stdin);
+    fgets(cadastro.nome,40,stdin);
+    }
+    if(validar_nome(cadastro.nome)==1)
+    {
+    printf("DIGITE O CPF do cliente");
+    fflush(stdin);
+    fgets(cadastro.cpf,40,stdin);
+    }
+    
+   
+    //inserir cpf e validar:aceitar até 11 caracteres
+    /*
+    printf("DIGITE O SEXO DO CLIENTE");
+    cadastro.sexo=getchar();
+    */
+    //inserir sexo e validar: aceitar apenas M,m,F,f
+    /*
+    printf("DIGITE DE NASCIMENTO NO FORMATO: ddmmaaaa");
+    printf("\nDIA:");
+    scanf("%d",&cadastro.nascimento.dia);
+    printf("\nMES: ");
+    scanf("%d",&cadastro.nascimento.mes);
+    printf("\nANO: ");
+    scanf("%d",&cadastro.nascimento.ano);
+    */
+    //inserir data e validar se é uma data válida: dias meses e anos
+  
+  return cadastro;//recebo variavel cadastro do tipo cliente
+}
 
 int validar_nome(char nome_inserido[]){
 
-
   int i=0;
-   int cont_caracters;
+  int cont=0;
 
   while(nome_inserido[i]!='\0')
     {
-      cont_caracters++;
-    }
-  cont_caracters=cont_caracters-1;
-
-  if(cont_caracters>20)
-  {
-    printf("o numero maximo de caracters eh igual a 20");
-
-    return 1;
-  }
-  else{
-    return 0;
-  }
-  
-  }
-int validar_cpf(char cpf_inserido[]){
-
-  int i=0;
-  int cont_caracters;
-
-  while(cpf_inserido[i]!='\0')
-    {
-      cont_caracters++;
-    }
-  cont_caracters=cont_caracters-1;
-
-  if(cont_caracters>11)
-  {
-    printf("o numero maximo de caracters eh igual a 11");
-
-    return 1;
-  }
-  else{
-    return 0;
-  }
-  
-  }
-int validar_sexo(char sexo_inserido[]){
-    
-    if(sexo_inserido=='M'|| sexo_inserido=='m'|| sexo_inserido=='F'|| sexo_inserido=='M' )
-    {
+     
+     cont++;  
+      if(cont<22)
+      {
+     
         return 1;
+        
+      }
+      else
+          return 0;
+     
+   
     }
-    
-    else
-    printf("!!!sexo invalido!!!");
-    return 0;
-}   
-  
-  
-  
-cadastro cadastro_cliente(){
-
-    cadastro cliente;
-
-    printf("\n-----> CADASTRO DE CLIENTE <-----\n");
-    printf("Digite o nome do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.nome, 20, stdin);
-    validar_nome(cliente.nome);
-    //chamando função que valida nome
-  printf("Digite o CPF do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.cpf,20, stdin);
-    validar_cpf(cliente.cpf);
-   //chamando função que valida cpf
-  printf("Digite a data de nascimento do cliente:ddmmaaaa\n"); scanf("%d%d%d",&cliente.nascimento.dia,&cliente.nascimento.mes,&cliente.nascimento.ano);
-    
-  printf("Digite o sexo do cliente:\n");
-    fflush(stdin);
-    fgets(cliente.sexo, 20, stdin);    
-    validar_sexo(cliente.sexo);//chamando funcao que valida sexo
-    
-    return cliente;
+ 
 }
-
- int main(){
-
-  cadastro result = cadastro_cliente();
-
-  printf("nome do cliente...%s",result.nome);
-  printf("CPF do cliente...%s",result.cpf);
-  printf("Data de nascimendo do cliente...%s",result.nascimento);
-  printf("Digite o sexo do cliente...%s",result.sexo);
-
-  
-   return 0;
- }
