@@ -3,7 +3,6 @@ validação deve ser feita em uma função diferente, conforme lista abaixo. A f
 deve chamar cada uma dessas funções. A função main deve imprimir se o cadastro foi realizado
 com sucesso ou se houve erro, informando onde foi o erro:
 • função validarNome: recebe o nome digitado, e valida se nome tem até 20 caracteres;
-
 • função validarSexo: recebe o sexo digitado, e valida é um sexo válido (opções: m e M para
 masculino; f e F para feminino, o e O para outro).
 • função validarCPF: recebe o cpf digitado, e valida é um cpf válido;
@@ -47,7 +46,10 @@ int main(){
   printf(".........SEXO = %c",saida.sexo);
   printf("\n===============================================\n");
   printf("..........DATA DE NASCIMENTO %d/%d/%d\n",saida.nascimento.dia,saida.nascimento.mes,saida.nascimento.ano);
-
+   printf("\n===============================================\n");
+  printf("CLIENTE CADASTRADO COM SUCESSO");
+ 
+  //neste programa em vez de retornar onde está o erro preferi solicitar ao usuário a entrada correta.
   
 }
 
@@ -60,7 +62,8 @@ cliente cadastro_cliente(){
     printf("Digite o NOME do cliente com ate 20 caracters ==  ");
     fflush(stdin);
 	fgets(cadastro.nome,40,stdin);
-    validar_nome(cadastro.nome);	
+    validar_nome(cadastro.nome);
+
 }
  while(validar_nome(cadastro.nome)!=1);
    
