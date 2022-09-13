@@ -1,39 +1,7 @@
-
-/*{Desenvolver um programa em C que controle o funcionamento de uma Escola. Existem diversas
-funcionalidades em uma Escola, mas você deve focar no que é pedido. Caso tenha interesse você
-pode evoluir sua solução para adicionar mais funcionalidades.
-Funcionalidades solicitadas:
-• Cadastro de Alunos (Matrícula, Nome, Sexo, Data Nascimento, CPF) .
-• Cadastro de Professores (Matrícula, Nome, Sexo, Data Nascimento, CPF).
-• Cadastro de Disciplinas (Nome, Código, Semestre, Professor)
-? Inserir/Excluir aluno de uma disciplina
-• Relatórios
-? Listar Alunos
-? Listar Professores
-? Listar Disciplinas (dados da disciplina sem os alunos)
-? Listar uma disciplina (dados da disciplina e os alunos matriculados)
-? Listar Alunos por sexo (Masculino/Feminino)
-? Listar Alunos ordenados por Nome
-? Listar Alunos ordenados por data de nascimento
-? Listar Professores por sexo (Masculino/Feminino)
-? Listar Professores ordenados por Nome
-? Listar Professores ordenados por data de nascimento
-INF029 - Laboratório de Programação – Graduação Tecnológica em Análise e Desenvolvimento de Sistemas – Atividade Extra
-? Aniversariantes do mês
-? Lista de pessoas (professor/aluno) a partir de uma string de busca. O usuário informa no
-mínimo três letras e deve ser listado todas as pessoas que contem essas três letras no
-nome.
-? Lista de alunos matriculados em menos de 3 disciplinas
-? Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas.
-Observação:
-• Por Cadastro entenda Incluir, excluir, atualizar
-• Valide todos os campos necessários (ex. Data nascimento, CPF)*/
-
-
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include "funcoes.h"
+
+//declaração e escopo das funcoes e structs
 
 typedef struct dma{
 	int dia;
@@ -63,6 +31,7 @@ typedef struct dados_professor{
 	//struct com as informacoes do professor
 }Professor;
 
+
 typedef struct dados_disciplina{
 	
 	int codigo;
@@ -71,10 +40,7 @@ typedef struct dados_disciplina{
 	char docente[40];
 }Disciplina;
 
-int main(){
-
-	//Aluno
-	Aluno aluno;// variavel aluno do tipo aluno
+	Aluno aluno;
 	Aluno lista_aluno[10];//vetor para armazenar a lista de alunos
 	int qtd_alunos=0;//contador para controlar a quantidade de alunos
 	//
@@ -86,29 +52,10 @@ int main(){
 	Disciplina lista_disciplina[10];
 	int qtd_disciplinas;
 	//
-	int opcao;
-	int sair=0;
-	//incializo o menu com o while
-while(!sair){
-		printf("\nDigite a opcao: \n ");
-		printf("0 - Sair\n");
-    	printf("1 - Inserir Aluno\n");
-   		printf("2 - Listar Alunos\n");
-   		printf("3 - Inserir Professor\n");
-   		printf("4 - Listar Professores\n");
-   		printf("5 - Inserir Disciplna\n");
-   		printf("6 - Listar Disciplinas\n");
-    	scanf("%d",&opcao);
-    
-    switch(opcao)
-    {
-    	case 0:{
-    		printf("finalizando programa");
-    		sair=1;
-			break;
-		}
-    	case 1:{
-    		printf("\n###CADASTRO DE ALUNO ###\n");
+Aluno cadastro_aluno(){
+	
+	
+	printf("\n###CADASTRO DE ALUNO ###\n");
     		
 			/*CADASTRO NOME*/
     		printf("digite a matricula do aluno: ");
@@ -148,12 +95,13 @@ while(!sair){
     	qtd_alunos++;
     	
     	printf("\n");
-    	
-    	break;
-		}
-		case 2:{
-			
-		printf("\n### Alunos Cadastrasdos ####\n");
+		
+}
+
+void printa_aluno(){
+
+
+			printf("\n### Alunos Cadastrasdos ####\n");
         int i;
         for (i = 0; i < qtd_alunos; i++){
           printf("-----\n");
@@ -165,10 +113,12 @@ while(!sair){
 
         }
         printf("-----\n\n");
-			break;
-		}
-		case 3:{
-				printf("\n###CADASTRO DE PROFESSOR ###\n");
+}
+
+
+Professor cadastro_professor(){
+
+printf("\n###CADASTRO DE PROFESSOR ###\n");
     		
 			/*CADASTRO NOME*/
     		printf("digite a matricula do professor: ");
@@ -206,11 +156,12 @@ while(!sair){
     
     	qtd_professores++;
     	
-    	printf("\n");
-			break;
-		}
-		case 4:{
-			printf("\n### PROFESSORES CADASTRADOS ####\n");
+    	printf("\n");	
+}
+
+void printa_professor(){
+	
+		printf("\n### PROFESSORES CADASTRADOS ####\n");
         int i;
         for (i = 0; i < qtd_professores; i++){
           printf("-----\n");
@@ -222,11 +173,11 @@ while(!sair){
 
         }
         printf("-----\n\n");
-			break;
-		}
-		case 5:{
-			
-				printf("\n###CADASTRO DE DISCIPLINA ###\n");
+}
+
+Disciplina cadastro_disciplina(){
+	
+		printf("\n###CADASTRO DE DISCIPLINA ###\n");
 				
 				printf("Digite o codigo da disciplina: ");
 				scanf("%d",&lista_disciplina[qtd_disciplinas].codigo);
@@ -244,9 +195,10 @@ while(!sair){
          		
 			qtd_disciplinas++;	
 				printf("\n");
-				break;
-		}
-		case 6:{
+}
+
+void printa_disciplina(){
+	
 			
 		printf("\n### DISCIPLINAS CADASTRADOS ####\n");
       	 int i=0;
@@ -259,34 +211,4 @@ while(!sair){
 
         }
         printf("-----\n\n");
-			
-			break;
-		
-	}
-	
-	}
 }
-	return 1;
-}	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
