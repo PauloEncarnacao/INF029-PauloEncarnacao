@@ -1,0 +1,2 @@
+int MenuPrincipal();
+void MenuSecundario();
