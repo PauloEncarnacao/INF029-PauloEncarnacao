@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "menu.h"
-#include "aluno.h"
-
 #define TAM 3
 #define CADASTRO_SUCESSO 1
 #define ERRO_CADASTRO_MATRICULA 2
@@ -24,14 +18,5 @@ char sexo;
 Data data_nascimento;
 }Aluno;
 
-Aluno aluno;
-int qtd_alunos=0;
-Aluno lista_aluno[TAM];
-
-
-int main(){//abertura main
-
-int resultado=adicionar_aluno (lista_aluno,qtd_alunos);
-  return 0;  
-}
-
+int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos);
+int ValidaData(int dia, int mes, int ano);
