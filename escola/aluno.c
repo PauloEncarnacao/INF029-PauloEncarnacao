@@ -91,15 +91,32 @@ int Valida_data_aluno(int dia, int mes, int ano){
 	return validade;
 }
 
-int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[])
-{
-  printf("DIGITE O NUMERO DE MATRICULA");
-  scanf("%d",&matricula);
+int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[]){
+  
+  Aluno nova_lista_aluno[];
+  
+  printf("DIGITE O NUMERO DE MATRICULA DO ALUNO QUE DESEJA ALTERAR");
+  scanf("%d",&matricula);  
 
- if (matricula == lista_aluno[qtd_alunos].matricula)
-   {
-    printf("ATUALIZADO COM SUCESSO");   
-     return CADASTRO_SUCESSO; 
-   }
+   
+  for(int i=0; i<qtd_alunos; i++){
+    if (matricula == lista_aluno[i].matricula){
+      
+       printf("Digite a nova matricula: ");
+        scanf("%d",&nova_lista_aluno[i].matricula);
+        getchar();
+  
+      
+
+        if(lista_aluno[qtd_alunos].matricula <= 0){
+            return ERRO_CADASTRO_MATRICULA;
+        }
+      return CADASTRO_SUCESSO;
+    }
+  }
 }
-
+  
+  
+     
+       
+ 

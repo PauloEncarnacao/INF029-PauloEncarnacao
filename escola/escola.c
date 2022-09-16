@@ -19,12 +19,9 @@ int matricula;
 
 int main(){
    int sair_menu = 0;
-    int opcao;
-
+    
     while (!sair_menu){
-        opcao=MenuPrincipal();
-        scanf("%d", &opcao);
-
+       int opcao=MenuPrincipal();
         switch (opcao){
             case 0 :{
                 printf("Finalizando...\n");
@@ -52,7 +49,7 @@ int main(){
 
                         case 1: {
                             int resultado;
-                            printf(" Incluir...\n");
+                            printf(" Cadastro...\n");
 
                             resultado = adicionar_aluno(lista_aluno, qtd_alunos);
 
