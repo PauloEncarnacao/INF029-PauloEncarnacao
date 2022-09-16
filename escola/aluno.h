@@ -15,7 +15,9 @@ char sexo;
 Data data_nascimento;
 }Aluno;
 
+//struct definido no aluno.h
+//cabeçalho da função no aluno.h
 int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos);
-int ValidaData(int dia, int mes, int ano);
-
+int Valida_data_aluno(int dia, int mes, int ano);
+int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[]);
 #endif

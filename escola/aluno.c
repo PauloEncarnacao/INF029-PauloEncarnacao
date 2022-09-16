@@ -6,11 +6,14 @@
 
 #define TAM 3
 #define CADASTRO_SUCESSO 1
+#define ATUALIZADO_SUCESSO 7
 #define ERRO_CADASTRO_MATRICULA 2
 #define ERRO_CADASTRO_SEXO 3
 #define ERRO_CADASTRO_DATA 4
 
-
+//os define utilizados nas funcoes
+//os include
+//as funcoes
 
 int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {
   
@@ -48,7 +51,7 @@ int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {
         scanf("%d", &lista_aluno[qtd_alunos].data_nascimento.ano);
         getchar();
 
-        if(ValidaData(lista_aluno[qtd_alunos].data_nascimento.dia,   lista_aluno[qtd_alunos].data_nascimento.mes, lista_aluno[qtd_alunos].data_nascimento.ano) != 0){
+        if (Valida_data_aluno(lista_aluno[qtd_alunos].data_nascimento.dia,   lista_aluno[qtd_alunos].data_nascimento.mes, lista_aluno[qtd_alunos].data_nascimento.ano) != 0){
             printf("Digite o CPF: ");
             fgets(lista_aluno[qtd_alunos].cpf, 12, stdin); 
             ln = strlen(lista_aluno[qtd_alunos].cpf) - 1; 
@@ -63,8 +66,8 @@ int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {
 
     return CADASTRO_SUCESSO;
 }
-  
-int ValidaData(int dia, int mes, int ano){
+
+int Valida_data_aluno(int dia, int mes, int ano){
 /* data inválida quando a variável 'validade' retorna 0*/
     int validade;
 
@@ -88,5 +91,15 @@ int ValidaData(int dia, int mes, int ano){
 	return validade;
 }
 
+int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[])
+{
+  printf("DIGITE O NUMERO DE MATRICULA");
+  scanf("%d",&matricula);
 
+ if (matricula == lista_aluno[qtd_alunos].matricula)
+   {
+    printf("ATUALIZADO COM SUCESSO");   
+     return CADASTRO_SUCESSO; 
+   }
+}
 
