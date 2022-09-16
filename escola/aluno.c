@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "aluno.h"
 
 
 #define TAM 3
@@ -8,6 +9,7 @@
 #define ERRO_CADASTRO_MATRICULA 2
 #define ERRO_CADASTRO_SEXO 3
 #define ERRO_CADASTRO_DATA 4
+
 
 
 int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {

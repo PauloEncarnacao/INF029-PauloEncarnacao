@@ -1,10 +1,7 @@
-#define TAM 3
-#define CADASTRO_SUCESSO 1
-#define ERRO_CADASTRO_MATRICULA 2
-#define ERRO_CADASTRO_SEXO 3
-#define ERRO_CADASTRO_DATA 4
+#ifndef ALUNO_H
+#define ALUNO_H
 
-typedef struct dma{
+ typedef struct dma{
   int dia;
   int mes;
   int ano;
@@ -20,3 +17,5 @@ Data data_nascimento;
 
 int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos);
 int ValidaData(int dia, int mes, int ano);
+
+#endif
