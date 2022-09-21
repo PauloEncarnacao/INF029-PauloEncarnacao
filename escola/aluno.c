@@ -10,6 +10,7 @@
 #define ERRO_CADASTRO_MATRICULA 2
 #define ERRO_CADASTRO_SEXO 3
 #define ERRO_CADASTRO_DATA 4
+#define ERRO_CADASTRO_ATUALIZACAO 5
 
 //os define utilizados nas funcoes
 //os include
@@ -52,10 +53,11 @@ int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {
         getchar();
 
         if (Valida_data_aluno(lista_aluno[qtd_alunos].data_nascimento.dia,   lista_aluno[qtd_alunos].data_nascimento.mes, lista_aluno[qtd_alunos].data_nascimento.ano) != 0){
+
             printf("Digite o CPF: ");
             fgets(lista_aluno[qtd_alunos].cpf, 12, stdin); 
             ln = strlen(lista_aluno[qtd_alunos].cpf) - 1; 
-            if (lista_aluno[qtd_alunos].cpf[ln] == '\n')
+            if(lista_aluno[qtd_alunos].cpf[ln] == '\n')
             lista_aluno[qtd_alunos].cpf[ln] = '\0';
             
         } else {
@@ -91,32 +93,26 @@ int Valida_data_aluno(int dia, int mes, int ano){
 	return validade;
 }
 
-int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[]){
-  
-  Aluno nova_lista_aluno[];
-  
-  printf("DIGITE O NUMERO DE MATRICULA DO ALUNO QUE DESEJA ALTERAR");
-  scanf("%d",&matricula);  
+int atualizar_aluno(Aluno new_aluno[], int qtd_alunos, Aluno lista_aluno[]){
+  for(int i=0; i<qtd_alunos ; i++){
+    printf("DIGITE O NUMERO DA MATRICULA: ");
+    scanf("%d",&new_aluno[i].matricula);
+    
+      if(new_aluno[i].matricula==lista_aluno[i].matricula){
+      lista_aluno[i].matricula=new_aluno[i].matricula;
+      printf("DIGITE O NOVO NOME DO ALUNO ");
+      fgets(new_aluno[i].nome,40,stdin);
+      fflush(stdin);
+      printf("DIGITE O NOVO NOME DO ALUNO ");
+      fgets(new_aluno[i].cpf,15,stdin);
+      fflush(stdin);
+      return ATUALIZADO_SUCESSO;
+      }
+    else
 
-   
-  for(int i=0; i<qtd_alunos; i++){
-    if (matricula == lista_aluno[i].matricula){
-      
-       printf("Digite a nova matricula: ");
-        scanf("%d",&nova_lista_aluno[i].matricula);
-        getchar();
-  
-      
-
-        if(lista_aluno[qtd_alunos].matricula <= 0){
-            return ERRO_CADASTRO_MATRICULA;
-        }
-      return CADASTRO_SUCESSO;
+       return ERRO_CADASTRO_ATUALIZACAO;
     }
   }
-}
-  
-  
-     
-       
+      
+        
  

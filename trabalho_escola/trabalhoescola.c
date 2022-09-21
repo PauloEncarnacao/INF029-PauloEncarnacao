@@ -1,29 +1,48 @@
 #include <stdio.h>
+#include <stdlib.h> 
 #include <string.h>
-#include <stdlib.h>
-#include "menu.h"
-#include "aluno.h"
+#include <ctype.h>
+#include <stddef.h>
+#include "funcoes.h"
 
+#define TAMANHO 3
 
-#define TAM 3
-#define CADASTRO_SUCESSO 1
-#define ATUALIZADO_SUCESSO 7
-#define ERRO_CADASTRO_MATRICULA 2
-#define ERRO_CADASTRO_SEXO 3
-#define ERRO_CADASTRO_DATA 4
-#define ERRO_CADASTRO_ATUALIZACAO 5
-
-Aluno aluno;
-int qtd_alunos=0;
-Aluno lista_aluno[TAM];
-Aluno new_aluno[TAM];
-
+void MenuPrincipal();
+void MenuSecundario();
+void MenuRelatorio();
+int incluirAluno (Aluno lista_aluno[], int qtd_alunos);
+int atualizarAluno(Aluno lista_aluno[], int qtd_aluno, int matricula);
+void excluirAluno(Aluno lista_aluno[], int qtd_aluno, int matricula);
+void listarAlunos(Aluno lista_aluno[], int qtd_alunos);
+int incluirProfessor(Professor lista_prof[], int qtd_prof);
+int atualizarProfessor(Professor lista_prof[], int qtd_prof, int matricula);
+void excluirProfessor(Professor lista_prof[], int qtd_prof, int matricula);
+void listarProfessor(Professor lista_prof[], int qtd_prof);
+int incluirDisciplina(Disciplina lista_disci[], int qtd_disciplina);
+void listarDisciplina(Disciplina lista_disci[], int qtd_disciplina);
+int ValidaData(int dia, int mes, int ano);
 
 int main(){
-   int sair_menu = 0;
+
     
+    Aluno lista_aluno[TAMANHO];
+    int qtd_alunos = 0;
+    
+    
+    Professor lista_prof[TAMANHO];
+    int qtd_prof = 0;
+    
+    
+    Disciplina lista_disci[TAMANHO];
+    int qtd_disciplina = 0;
+
+    int sair_menu = 0;
+    int opcao;
+
     while (!sair_menu){
-       int opcao=MenuPrincipal();
+        MenuPrincipal();
+        scanf("%d", &opcao);
+
         switch (opcao){
             case 0 :{
                 printf("Finalizando...\n");
@@ -38,7 +57,6 @@ int main(){
                 printf("----> ALUNO <---- \n");
 
                 while (!sair_aluno){
-                  
                     MenuSecundario();
                     scanf("%d", &opcao_aluno);
 
@@ -51,11 +69,11 @@ int main(){
 
                         case 1: {
                             int resultado;
-                            printf(" Cadastro...\n");
+                            printf(" Incluir...\n");
+                            
+                            resultado = incluirAluno(lista_aluno, qtd_alunos);
 
-                            resultado = adicionar_aluno(lista_aluno, qtd_alunos);
-
-                                if(resultado == CADASTRO_SUCESSO){
+                                if(resultado == CADASTRADO_SUCESSO){
                                     printf("Cadastrado com sucesso!\n");
                                     qtd_alunos++;
                                 } else {
@@ -69,7 +87,7 @@ int main(){
                                             break;
                                         }
 
-                                        case ERRO_CADASTRO_DATA: {
+                                        case DATA_NASCIMENTO_INVALIDA: {
                                             printf("Data de nascimento inválida");
                                             break;
                                         }
@@ -89,9 +107,7 @@ int main(){
                         }
 
                         case 2: {
-                         int atualizar;
                             printf("Atualizar...\n");
-                            atualizar= atualizar_aluno( new_aluno, qtd_alunos, lista_aluno );     
                             break;
                         }
 
@@ -99,13 +115,13 @@ int main(){
                             printf("Deletar...\n");
                             break;
                         }
-
+                        
                         default:{
                             break;
                         }
                     }
                 }
-
+                
                 break;
             }
 
@@ -131,11 +147,11 @@ int main(){
 
                             printf(" Incluir...\n");
 
-                            //resultado = incluirProfessor(lista_prof, qtd_prof);
+                            resultado = incluirProfessor(lista_prof, qtd_prof);
 
-                            if(resultado == CADASTRO_SUCESSO){
+                            if(resultado == CADASTRADO_SUCESSO){
                                     printf("Cadastrado com sucesso!\n");
-                                   // qtd_prof++;
+                                    qtd_prof++;
                                 } else {
                                     switch(resultado) {
                                         case ERRO_CADASTRO_MATRICULA:{
@@ -148,7 +164,7 @@ int main(){
                                             break;
                                         }
 
-                                        case ERRO_CADASTRO_DATA: {
+                                        case DATA_NASCIMENTO_INVALIDA: {
                                             printf("Data de nascimento inválida");
                                             break;
                                         }
@@ -169,7 +185,6 @@ int main(){
 
                         case 2: {
                             printf("Atualizar...\n");
-                            
                             break;
                         }
 
@@ -177,7 +192,7 @@ int main(){
                             printf("Deletar...\n");
                             break;
                         }
-
+                        
                         default:{
                             printf("Opcao incorreta, tente novamente...\n");
                             break;
@@ -209,11 +224,11 @@ int main(){
                         case 1: {
                             int resultado; 
                             printf(" Incluir...\n");
-                            //ncluirDisciplina(lista_disci, qtd_disciplina);
+                            incluirDisciplina(lista_disci, qtd_disciplina);
 
-                            if (resultado == CADASTRO_SUCESSO){
+                            if (resultado == CADASTRADO_SUCESSO){
                                 printf("Disciplina cadastrada com sucesso!\n");
-                               // qtd_disciplina++;
+                                qtd_disciplina++;
                             }
                             break;
                         }
@@ -227,7 +242,7 @@ int main(){
                             printf("Deletar...\n");
                             break;
                         }
-
+                        
                         default:{
                             printf("Opcao incorreta, tente novamente...\n");
                             break;
@@ -245,8 +260,8 @@ int main(){
                 printf("----> RELATÓRIOS <----\n");
 
                 while (!sair_relatorio){
-                   // MenuRelatorio();
-                   // scanf("%d", &opcao_relatorio);
+                    MenuRelatorio();
+                    scanf("%d", &opcao_relatorio);
 
                     switch (opcao_relatorio){
                         case 0: {
@@ -257,19 +272,19 @@ int main(){
 
                         case 1: {
                             printf("Listando Alunos...\n");
-                           // listarAlunos(lista_aluno, qtd_alunos);
+                            listarAlunos(lista_aluno, qtd_alunos);
                             break;
                         }
 
                         case 2: {
                             printf("Listando Professores...\n");
-                           // listarProfessor(lista_prof, qtd_prof);
+                            listarProfessor(lista_prof, qtd_prof);
                             break;
                         }
 
                         case 3: {
                             printf("Listando Disciplinas...\n");
-                          //  listarDisciplina(lista_disci, qtd_disciplina);
+                            listarDisciplina(lista_disci, qtd_disciplina);
                             break;
                         }
 
@@ -278,13 +293,13 @@ int main(){
                             printf("Página em construção\n");
                             break;
                         }
-
+                        
                         case 5: {
                             printf("Listar Alunos ordenados por nome\n");
                             printf("Página em construção\n");
                             break;
                         }
-
+                        
                         case 6: {
                             printf("Listar Alunos ordenados por data de nascimento\n");
                             printf("Página em construção\n");
@@ -296,27 +311,27 @@ int main(){
                             printf("Página em construção\n");
                             break;
                         }
-
+                        
                         case 8: {
                             printf("Listar Professores ordenados por nome\n");
                             printf("Página em construção\n");
                             break;
                         }
-
+                        
                         case 9: {
                             printf("Listar Professores ordenados por data de nascimento\n");
                             printf("Página em construção\n");
                             break;
                         }
-
+                        
                         default:{
                             printf("Opcao incorreta, tente novamente...\n");
                             break;
                         }
-
+                        
                     }
                 }
-
+                
                 break;
             }
 
@@ -326,8 +341,6 @@ int main(){
             }
         }
     }
-  
-  return 0;  
+    
+    return 0;
 }
-
-  

@@ -19,5 +19,5 @@ Data data_nascimento;
 //cabeçalho da função no aluno.h
 int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos);
 int Valida_data_aluno(int dia, int mes, int ano);
-int atualizar_aluno(int matricula, int qtd_alunos, Aluno lista_aluno[]);
+int atualizar_aluno(Aluno new_aluno[], int qtd_alunos, Aluno lista_aluno[]);
 #endif
