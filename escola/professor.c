@@ -1,4 +1,4 @@
-int adicionar_aluno (Aluno lista_aluno[], int qtd_alunos) {
+int adicionar_professor (Aluno lista_aluno[], int qtd_alunos) {
   
         printf("Matricula: ");
         scanf("%d", &lista_aluno[qtd_alunos].matricula);
