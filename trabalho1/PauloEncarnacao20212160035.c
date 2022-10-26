@@ -21,6 +21,9 @@
 
 // #################################################
 
+
+// gcc corretor.c PauloEncarnacao20212160035.c PauloEncarnacao20212160035.h -o exe.c
+
 #include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -86,7 +89,6 @@ DataQuebrada quebraData(char data[]){
 	char sAno[5];
 	int i;
 
-
   
   int fev=28;//mês fevereiro
 
@@ -101,7 +103,7 @@ DataQuebrada quebraData(char data[]){
 		dq.valido = 0;
     
   }  
-	
+
 
 	int j = i + 1; //anda 1 cada para pular a barra
 	i = 0;
@@ -132,14 +134,12 @@ DataQuebrada quebraData(char data[]){
 		dq.valido = 0;
    
   }
-
   dq.iDia = atoi(sDia);//converte string em numero
   dq.iMes = atoi(sMes);//converte string em numero
   dq.iAno = atoi(sAno);//converte string em numero
 
 	dq.valido = 1;
     
-   
   if(dq.iAno % 4 == 0 && (dq.iAno % 400 == 0 || dq.iAno % 100 != 0))
   {
     fev = 29;
@@ -220,7 +220,6 @@ int q1(char data[])
     4 -> datainicial > datafinal
     Caso o cálculo esteja correto, os atributos qtdDias, qtdMeses e qtdAnos devem ser preenchidos com os valores correspondentes.
  */
-
 
 
 
@@ -329,11 +328,14 @@ int q4(char strTexto[], char strBusca[], int posicoes[30])
       p++;
       posicoes[p] = fim;
       p++;
+
+      //testre 
       //printf("%d - %d - %d - %d\n", ini, fim, p, qtd);
     };
     
     ini++;
     fim++;
+    
     //printf("%s\n", strTexto);   
     scop[0] = '0';
     tam--;
@@ -400,7 +402,7 @@ int q6(int numerobase, int numerobusca)
     tam2++;
   }   
 
-  char sbas[tam], sbus[tam2];
+  char sbas [tam], sbus[tam2];
   sprintf(sbas, "%d", numerobase);
   sprintf(sbus, "%d", numerobusca);
   //printf("%s - %d\n", sbus, tam2);
