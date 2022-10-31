@@ -81,100 +81,79 @@ int teste(int a)
 }
 
 
-DataQuebrada quebraData(char data[]){
-  
-  DataQuebrada dq;
-  char sDia[3];
-	char sMes[3];
-	char sAno[5];
-	int i;
+Data quebraData(char *data){
+    char dia[3];
+	char mes[3];
+	char ano[5];
+	int barra=0, k=0, i=0;
 
-  
-  int fev=28;//mês fevereiro
+	Data datainteira;
 
-  dq.valido=0;
-  
-	for (i = 0; data[i] != '/'; i++){
-		sDia[i] = data[i];	
+	while(data[i]!='\0'){
+        if(data[i]=='/'){
+            barra++;
+            k=0;
+        }
+        if(barra==0){
+            dia[k]=data[i];
+            dia[k+1]='\0';
+            k++;
+        }
+        else if(barra == 1){
+            if(data[i]=='/'){
+                i++;
+            }
+            mes[k]=data[i];
+            mes[k+1]='\0';
+            k++;
+        }
+        else if(barra == 2){
+            if(data[i]=='/'){
+                i++;
+            }
+            ano[k]=data[i];
+            ano[k+1]='\0';
+            k++;
+        }
+        i++;
+    }
+
+	datainteira.dia=atoi(dia);
+	datainteira.mes=atoi(mes);
+	datainteira.ano=atoi(ano);
+
+    if (datainteira.ano>=0 && datainteira.ano<=18){
+        datainteira.ano += 2000;
+    }
+    else if (datainteira.ano>=19 && datainteira.ano<=99){
+        datainteira.ano += 1900;
+    }
+
+    return datainteira;
+}
+
+int ValidaData(int dia, int mes, int ano){
+    int validade;
+
+	if (mes > 12 || mes < 1 || dia < 1 || dia > 31){
+		validade = 0;
 	}
-	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
-		sDia[i] = '\0';  // coloca o barra zero no final
-	}else {
-		dq.valido = 0;
-    
-  }  
-
-
-	int j = i + 1; //anda 1 cada para pular a barra
-	i = 0;
-
-	for (; data[j] != '/'; j++){
-		sMes[i] = data[j];
-		i++;
+	else if ((dia < 1 && dia > 31) && (mes == 1||mes == 3||mes == 5||mes == 7||mes == 8||mes == 10||mes == 12)) {
+		validade = 0;
+	}
+	else if ((dia < 1 && dia > 30) && (mes == 4|| mes == 6 || mes == 9 || mes == 11)){
+        validade = 0;
+    }
+	else if (ano % 400 == 0 || (ano % 4 == 0 && ano % 100 != 0)) {
+		if (mes == 2 && dia > 29) {
+			validade = 0;
+		}
+	}
+	else if (mes == 2 && dia > 28) {
+		validade = 0;
 	}
 
-	if(i == 1 || i == 2){ // testa se tem 1 ou dois digitos
-		sMes[i] = '\0';  // coloca o barra zero no final
-	}else {
-		dq.valido = 0;
-  }
-	
-
-	j = j + 1; //anda 1 cada para pular a barra
-	i = 0;
-	
-	for(; data[j] != '\0'; j++){
-	 	sAno[i] = data[j];
-	 	i++;
-	}
-
-	if(i == 2 || i == 4){ // testa se tem 2 ou 4 digitos
-		sAno[i] = '\0';  // coloca o barra zero no final
-	}else {
-		dq.valido = 0;
-   
-  }
-  dq.iDia = atoi(sDia);//converte string em numero
-  dq.iMes = atoi(sMes);//converte string em numero
-  dq.iAno = atoi(sAno);//converte string em numero
-
-	dq.valido = 1;
-    
-  if(dq.iAno % 4 == 0 && (dq.iAno % 400 == 0 || dq.iAno % 100 != 0))
-  {
-    fev = 29;
-  };
-
-  if(dq.iMes > 0 && dq.iMes < 12)
-  {
-    if(dq.iMes == 1||3||5||7||8||10||12)
-    {
-      if(dq.iDia <= 31 && dq.iDia > 0){
-        dq.valido = 1;
-      };
-    }
-    else if(dq.iMes == 4||6||9||11)
-    {
-      if(dq.iDia <= 30 && dq.iDia > 0){
-        dq.valido = 1;
-      };
-    }
-    else if(dq.iMes == 2)
-    {
-      if(dq.iDia <= fev && dq.iDia > 0){
-        dq.valido = 1;
-      }
-      else{
-        dq.valido = 0;
-      };
-    }
-    else
-    {
-        dq.valido = 0;
-    }
-  }
-
-  return dq;
+	return validade;
 }
 /*
  Q1 = validar data
@@ -189,13 +168,15 @@ DataQuebrada quebraData(char data[]){
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
  */
-int q1(char data[])
-{
+int q1(char *data){
+    int data_valida = 1;
 
-  DataQuebrada dataQuebrada = quebraData(data);
+    Data data_quebrada = quebraData(data);
+    data_valida = ValidaData(data_quebrada.dia,data_quebrada.mes,data_quebrada.ano);
 
-  return dataQuebrada.valido;
+    return (data_valida);
 }
+
 
   //quebrar a string data em strings sDia, sMes, sAno
 

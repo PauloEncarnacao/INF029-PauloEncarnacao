@@ -23,14 +23,14 @@
 #ifndef TRABALHO1_PAULOENCARNACAO20212160035_H
 #define TRABALHO1_PAULOENCARNACAO20212160035_H
 
-typedef struct DQ
+typedef struct 
 {
-    int iDia; 
-    int iMes;
-    int iAno;
-    int valido; // 0 se inválido, e 1 se válido 
+    int dia; 
+    int mes;
+    int ano;
+     
 
-} DataQuebrada;
+} Data;
 
 typedef struct Qtd
 {
@@ -43,8 +43,9 @@ typedef struct Qtd
 
 int somar(int x, int y); //função utilizada para testes
 int fatorial(int x); //função utilizada para testes
-DataQuebrada quebraData(char data[]);
-int q1(char data[]);
+Data quebraData(char *data);
+int ValidaData(int dia, int mes, int ano);
+int q1(char *data);
 DiasMesesAnos q2(char datainicial[], char datafinal[]);
 int q3(char *texto, char c, int isCaseSensitive);
 int q4(char *strTexto, char *strBusca, int posicoes[30]);
