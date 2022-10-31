@@ -248,32 +248,48 @@ int q1(char data[])
  @saida
     Um número n >= 0.
  */
-int q3(char texto[], char c, int cs)
-{
+/*
+ Q3 = encontrar caracter em texto
+ @objetivo
+    Pesquisar quantas vezes um determinado caracter ocorre em um texto
+ @entrada
+    uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferências entre maiúsculos e minúsculos.
+        Se isCaseSensitive != 1, a pesquisa não deve  considerar diferências entre maiúsculos e minúsculos.
+ @saida
+    Um número n >= 0.
+ */
+int q3 (char *texto, char c, int isCaseSensitive){
+    int cont = 0; //contador
+    int tam = 0; //tamanho
+	int qtdOcorrencias = 0;
 
-  //Ignorar acentos.
+	tam = strlen(texto); // variavel tam recebe tamnho do string "texto"
 
-  int i, j, tam, qtdOcorrencias = 0;
-  
-  tam = strlen(texto);
+	if (isCaseSensitive == 1){  
+		cont = 0;
 
-  if(cs != 1){
-      for(i=0;i<tam;i++){
-        if(texto[i] == toupper(c) || texto[i] == tolower(c)){
-          qtdOcorrencias++;
-        }
-      }
-    }
-  else if(cs == 1){
-    for(i=0;i<tam;i++){
-      if(texto[i] == c){
-        qtdOcorrencias++;
-      }
-    }
-  }
-
-  return qtdOcorrencias;
+		while(cont <= tam){
+			if(c == texto[cont]){
+				qtdOcorrencias++; // incremento ocorrencias 
+			}
+		cont++; //incremento no contador
+ 		}
+	}
+	else if (isCaseSensitive != 1){
+				cont = 0; // atribuo 0 ao cont
+		while(cont <= tam){
+			if(texto[cont] == toupper(c) || texto[cont] == tolower(c)){ 
+				qtdOcorrencias++;
+			}
+		    	cont++;
+ 		}
+	}
+   
+    return qtdOcorrencias;
 }
+
+
+
 /*
  Q4 = encontrar palavra em texto
  @objetivo
@@ -288,63 +304,38 @@ int q3(char texto[], char c, int cs)
         Observe que o índice da posição no texto deve começar ser contado a partir de 1.
         O retorno da função, n, nesse caso seria 1;
  */
-int q4(char strTexto[], char strBusca[], int posicoes[30])
-{
-  int qtd = 0;
+int q4(char *strTexto, char *strBusca, int posicoes[30]){
   
-  int tam = strlen(strTexto);
-  int tam2 = strlen(strBusca);
+    int iCont, jCont, kCont, xCont, yCont, Cont01, Cont02, Cont3;
+    int qtdOcorrencias; 
+    
+    xCont = yCont = jCont = kCont = Cont01 = Cont02 = qtdOcorrencias = 0; //todos recebem 0
 
-  char scop[tam2];
-  int k;
-  for(k=0;k<tam2;k++){
-    scop[k] = 'k';
-  }
-
-  scop[0] = '\0';
-  
-  //printf("%s - %d\n", scop, tam2);
-  
-  int i, f=0, f2=0, p=0;
-  
-  int ini = 1, fim = tam2;
-
-  while(tam>=tam2){
-    //printf("%d - %d \n",tam, tam2); 
-    for(i=0;i<tam2;i++){
-      scop[i] = strTexto[f];
-      f++;
+    if(strlen(strBusca) == 1){
+        for(iCont = 0; strTexto[iCont]!='\0'; iCont++){
+            if(strTexto[iCont] == strBusca[0])
+                Cont01++;
+        }
+        return Cont01;
     }
-    //printf("- %s\n", scop);
-    int a = strlen(scop);
-    
-    //printf("- %d - %d\n", a, tam2);
-    //printf("%s - %s\n",scop, strBusca);
-    
-  int teste = strcmp(scop, strBusca);
-    if(teste==0){
-      qtd++;
-      posicoes[p] = ini;
-      p++;
-      posicoes[p] = fim;
-      p++;
 
-      //testre 
-      //printf("%d - %d - %d - %d\n", ini, fim, p, qtd);
-    };
-    
-    ini++;
-    fim++;
-    
-    //printf("%s\n", strTexto);   
-    scop[0] = '0';
-    tam--;
-    f2++;
-    f = f2;
-  }
-
-  return qtd;
+    for(iCont = 0; strTexto[iCont]!='\0'; iCont++){
+        Cont01 = 0;
+    if(strTexto[iCont] == -95 || strTexto[iCont] == -87 || strTexto[iCont] == -83 || strTexto[iCont] == -77 || strTexto[iCont] == -70 || strTexto[iCont] == -93 || strTexto[iCont] == -89)
+       Cont3++;
+        if(strTexto[iCont] == strBusca[jCont]){
+            for(xCont = iCont + 1, kCont = jCont + 1; strBusca[kCont] == strTexto[xCont]; xCont++ ,kCont++)
+                Cont01++;
+        }
+        if(Cont01 == strlen(strBusca)-1){
+            posicoes[yCont++] = (iCont + 1)- Cont3;
+            posicoes[yCont++] = xCont - Cont3;
+            qtdOcorrencias++;
+        }
+    }
+    return qtdOcorrencias;
 }
+
 /*
  Q5 = inverte número
  @objetivo
@@ -357,25 +348,22 @@ int q4(char strTexto[], char strBusca[], int posicoes[30])
 
 int q5(int num)
 {
-  int cont = 1, val = num; 
   
-  while(val>9){
-    val = val/10;
-    cont++;
-  }
+int numinvert=0;int i=1;
 
-  char sNum[cont], invert[cont];
+  do{
 
-  printf(sNum, "%d", num);
-  int i, j=cont-1;
-  for(i=0;i<cont;i++){
-    invert[i] = sNum[j];
-    j--;
-  }
+    numinvert= numinvert*10;
+    numinvert = numinvert + (num % (i * 10 ) - num % i)/ i;
 
-  num = atoi(invert);
+    i = i*10;
+  
+    
+    }while(i<= num);
 
-  return num;
+
+    return numinvert;
+  
 }
 /*
  Q6 = ocorrência de um número em outro
@@ -387,45 +375,61 @@ int q5(int num)
     Quantidade de vezes que número de busca ocorre em número base
  */
 
-int q6(int numerobase, int numerobusca)
-{
-  int qtdOcorrencias = 0, tam = 1, tam2 = 1;
+int q6(int numerobase, int numerobusca){
 
-  int val = numerobase;
-  while(val>9){
-    val = val/10;
-    tam++;
-  }  
-  val = numerobusca;
-  while(val>9){
-    val = val/10;
-    tam2++;
-  }   
-
-  char sbas [tam], sbus[tam2];
-  sprintf(sbas, "%d", numerobase);
-  sprintf(sbus, "%d", numerobusca);
-  //printf("%s - %d\n", sbus, tam2);
-
-  char scop[tam2];
-  strcpy(scop, "1");
-  int i, f=0;
   
-  while(tam>=tam2){
-    for(i=0;i<tam2;i++){
-      scop[i] = sbas[f];
-      f++;
-    }
+  int contadorBase,Cont1,Cont2,control,contadorBusca;
+    int qtdOcorrencias = 0;
+    int Base[300];
+    int Busca[300];
+    contadorBase = Cont1 = Cont2 = control = contadorBusca = 0;
 
-    //printf("%s - %s\n",scop, sbus);
-
-    int teste = strcmp(scop, sbus);
-    if(teste==0){
-      qtdOcorrencias++;
-    };
-    scop[0] = '0';
-    tam--;
-  }
-  
-  return qtdOcorrencias;
+	while(numerobase >= 0){
+        //preenchendo vetor de int numerobase
+		if(numerobase < 10 && numerobase >= 0 ){
+			Base[contadorBase] = numerobase;
+			break;
+		}
+		else{
+			Base[contadorBase] = numerobase % 10;
+			numerobase = numerobase / 10;
+			contadorBase++;
+		}
+	}
+	while(numerobusca >= 0){
+        //preenchendo vetor numerobusca
+		if(numerobusca < 10 && numerobase >= 0){
+			Busca[contadorBusca] = numerobusca;
+			break;
+		}
+		else{
+			Busca[contadorBusca] = numerobusca % 10;
+			numerobusca = numerobusca / 10;
+			contadorBusca++;
+		}
+	}
+	//buscando ocorrencias 
+	for (Cont1 = 0; Cont1 <= contadorBase; ++Cont1){
+		if(contadorBusca == 0){
+			if (Busca[0] == Base[Cont1]){
+				qtdOcorrencias++;
+			}
+		}
+		else{
+			if(Busca[Cont2] == Base[Cont2]){
+				control = 1;
+				Cont2++;
+			}
+			else if (Busca[Cont2] != Base[Cont1]){
+				control = 0;
+				Cont2 = 0;
+			}
+			if(control == 1 && Cont2 == contadorBusca){
+				control = 0;
+				Cont2 = 0;
+				qtdOcorrencias++;
+			}
+		}
+	}
+    return qtdOcorrencias;
 }
