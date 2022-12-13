@@ -1,18 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void imprimirVetor(int*vet,)
+void imprimirVetorInt(int *v,int tam){
+ for(int i=0; i<tam; i++){
+    printf("%d\n",*(v+i));//aritimetica de ponteiros 
+  }
+}
 
+void imprimirVetorLetras(char *v,int tam){
+ for(int i=0; i<tam; i++){
+    printf("%c\n",*(v+i));//aritimetica de ponteiros 
+  }
+}
 int main(){
 
-  int i,vet[10]={5,4,6,8,9,5,4,7,6,10};
+  int vet[10]={5,4,6,8,9,5,4,7,6,10};
+  //imprimirVetorInt(vet,10);
+   return 0;
 
-  printf("%p\t%p\n",vet,&vet[0]);
+  char letra[10]={'a','b','c','d','e','f','g'};
+  imprimirVetorLetras(letra,7);
   
+}
+  //printf("%p\t%p\n",vet,&vet[0]);
+  /*
   for(i=0; i<10; i++){
     printf("%d\n",*(vet+i));//aritimetica de ponteiros 
   }
-
+*/
   /*
     int *valor1, valor2= 50;//ponteiro para um tipo int
     char *letra1, letra2='g';//ponteiro para um tipo char
@@ -34,6 +49,4 @@ int main(){
   printf("conteudo apontado pela variavel VALOR1:  %c",*letra1);
   */
   
-  return 0;
-  
-}
+ 
