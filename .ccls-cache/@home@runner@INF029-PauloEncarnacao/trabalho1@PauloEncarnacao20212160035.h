@@ -16,9 +16,6 @@
 //  Matrícula: 20212160035  
 //  Semestre: 2º
 
-//  Copyright © 2016 Renato Novais. All rights reserved.
-// Última atualização: 07/05/2021
-
 // #################################################
 #ifndef TRABALHO1_PAULOENCARNACAO20212160035_H
 #define TRABALHO1_PAULOENCARNACAO20212160035_H

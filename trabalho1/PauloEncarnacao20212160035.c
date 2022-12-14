@@ -16,8 +16,6 @@
 //  Matrícula: 20212160035  
 //  Semestre: 2º
 
-//  Copyright © 2016 Renato Novais. All rights reserved.
-// Última atualização: 07/05/2021 - 19/08/2016
 
 // #################################################
 
@@ -217,18 +215,6 @@ int q1(char *data){
 
 
 
-
-
-/*
- Q3 = encontrar caracter em texto
- @objetivo
-    Pesquisar quantas vezes um determinado caracter ocorre em um texto
- @entrada
-    uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferenças entre maiúsculos e minúsculos.
-        Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
- @saida
-    Um número n >= 0.
- */
 /*
  Q3 = encontrar caracter em texto
  @objetivo
