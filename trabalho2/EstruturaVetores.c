@@ -38,7 +38,6 @@ void insertion(int vetor[], int tam){
 		}
   
 }
-
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho'

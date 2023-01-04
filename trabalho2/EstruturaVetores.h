@@ -12,7 +12,7 @@ enum { TODAS_ESTRUTURAS_AUXILIARES_VAZIAS = -11, NOVO_TAMANHO_INVALIDO, NUMERO_I
 // Estrutura Principal
 typedef struct principal{
 	int *aux; // VAI APONTAR PARA A ESTRUTURA AUXILIAR
-	int tamanhoAux; // TAMANHO DA ESTRUTURA AUXILIAR
+	int tamAux; // TAMANHO DA ESTRUTURA AUXILIAR
 	int qtd; // ELE VAI CONTAR A QUANTIDADE DE ELEMENTOS no VETOR
 }Principal;
 
@@ -21,16 +21,24 @@ typedef struct reg {
     struct reg *prox;
 } No;
 
-int criarEstruturaAuxiliar(int posicao, int tamanho);
-int inserirNumeroEmEstrutura(int posicao, int valor);
-int excluirNumeroDoFinaldaEstrutura(int posicao);
-int excluirNumeroEspecificoDeEstrutura(int posicao, int valor);
-int getDadosEstruturaAuxiliar(int posicao, int vetorAux[]);
-int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[]);
+
+struct tam
+{
+  int limite;
+  int ocupado;
+};
+typedef struct tam tams;
+
+int criarEstruturaAuxiliar(int pos, int tam);
+int inserirNumeroEmEstrutura(int pos, int valor);
+int excluirNumeroDoFinaldaEstrutura(int pos);
+int excluirNumeroEspecificoDeEstrutura(int pos, int valor);
+int getDadosEstruturaAuxiliar(int pos, int vetorAux[]);
+int getDadosOrdenadosEstruturaAuxiliar(int pos, int vetorAux[]);
 int getDadosDeTodasEstruturasAuxiliares(int vetorAux[]);
 int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[]);
-int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho);
-int getQuantidadeElementosEstruturaAuxiliar(int posicao);
+int modificarTamanhoEstruturaAuxiliar(int pos, int novoTamanho);
+int getQuantidadeElementosEstruturaAuxiliar(int pos);
 No *montarListaEncadeadaComCabecote();
 void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[]);
 void destruirListaEncadeadaComCabecote(No **inicio);
