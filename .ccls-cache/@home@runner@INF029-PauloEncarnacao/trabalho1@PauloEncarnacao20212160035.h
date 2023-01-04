@@ -29,6 +29,15 @@ typedef struct
 
 } Data;
 
+typedef struct DQ
+{
+    int iDia; 
+    int iMes;
+    int iAno;
+    int valido; // 0 se inválido, e 1 se válido 
+
+} DataQuebrada;
+
 typedef struct Qtd
 {
     int qtdDias;
@@ -40,7 +49,8 @@ typedef struct Qtd
 
 int somar(int x, int y); //função utilizada para testes
 int fatorial(int x); //função utilizada para testes
-Data quebraData(char *data);
+//Data quebraData(char *data);
+DataQuebrada quebraData(char data[])
 int ValidaData(int dia, int mes, int ano);
 int q1(char *data);
 DiasMesesAnos q2(char datainicial[], char datafinal[]);

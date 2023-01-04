@@ -9,7 +9,7 @@ int menu(){
     printf("1 - Inserir\n");
     printf("2 - Excluir\n");
     printf("3 - Listar\n");
-    printf("4 - Redimensionar Espaço\n");
+    printf("4 - Dobrar Numero\n");
     printf("5 - Lista Vetor Auxiliar Ordenado\n");
     printf("6 - Lista todos os elementos ordenados\n");
     printf("5 - \n");

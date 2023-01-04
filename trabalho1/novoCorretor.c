@@ -17,24 +17,24 @@
 #include "PauloEncarnacao20212160035.h"
 
 void testQ1();
-//void testQ2();
+void testQ2();
 void testQ3();
 void testQ4();
 void testQ5();
 void testQ6();
 
 int main() {
-  printf("q1\n");
+  //printf("q1\n");
   testQ1(); // 10 testes
-   printf("q2\n");
-  //testQ2(); // 35 testes
-   printf("q3\n");
+   //printf("q2\n");
+  testQ2(); // 35 testes
+   //printf("q3\n");
   testQ3(); // 13 testes
-   printf("q4\n");
+   //printf("q4\n");
   testQ4(); // 22 testes
-   printf("q5\n");
+   //printf("q5\n");
   testQ5(); // 10 testes
-   printf("q6\n");
+   //printf("q6\n");
   testQ6(); // 10 testes
 }
 
@@ -61,7 +61,7 @@ void testQ1() {
   strcpy(str, "1/12/19");
   printf("%d\n", q1(str) == 1);
 }
-/*
+
 void testQ2() {
   char datainicial[11], datafinal[11];
   int qtdDias, qtdMeses, qtdAnos;
@@ -192,7 +192,8 @@ void testQ2() {
   printf("%d\n", dma.qtdMeses == 1);
   printf("%d\n", dma.qtdAnos == 0);
 }
-*/
+
+
 void testQ3() {
   char str[250];
   strcpy(str, "Renato Lima Novais");
