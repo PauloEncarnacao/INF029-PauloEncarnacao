@@ -7,9 +7,9 @@
 #include "EstruturaVetores.h"
 
 Principal vet_princpal[TAM];
-Principal vet_princiapal[TAM];
+Principal vet_princiapal2[TAM];
 
-/*
+
 void teste(){
 
 int criarEstruturaAuxiliar(int posicao, int tamanho);
@@ -28,7 +28,7 @@ void destruirListaEncadeadaComCabecote(No **inicio);
 void inicializar();
 void finalizar();
 void dobrar(int *x);
-*/  
+  
 
 /*
 int verificaEstrutura(PRINCIPAL *vetor_principal, int posicao){
@@ -40,6 +40,7 @@ int verificaEstrutura(PRINCIPAL *vetor_principal, int posicao){
 }
 
 */
+
 void capt_dados_aux(int tam, int vetorAux[], int posicao){
   
   for (int i = 0; i < tam; i++){
@@ -101,7 +102,7 @@ Rertono (int)
     TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1
 */
 
-int criarEstruturaAuxiliar(int posicao, int tamanho) {
+int criarEstruturaAuxiliar(int posicao,int tamanho) {
   int num_retornado = 0;
   
   if (tamanho < 1)
