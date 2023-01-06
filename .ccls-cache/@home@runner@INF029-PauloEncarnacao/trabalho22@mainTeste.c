@@ -97,6 +97,7 @@ void testeExcluirNumeroEspecifico()
     printf("%d\n", inserirNumeroEmEstrutura(9, 4) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 12) == NUMERO_INEXISTENTE);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 7) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 4) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(1, 2) == SEM_ESTRUTURA_AUXILIAR);
 }
 /*
@@ -121,6 +122,7 @@ void testeListar()
 
     printf("%d\n", getDadosOrdenadosEstruturaAuxiliar(1, vet) == SEM_ESTRUTURA_AUXILIAR);
     printf("%d\n", getDadosOrdenadosEstruturaAuxiliar(11, vet) == POSICAO_INVALIDA);
+    printf("%d\n", getDadosOrdenadosEstruturaAuxiliar(2, vet) == SUCESSO);
 
     printf("%d\n", vet[0] == -9);
     printf("%d\n", vet[1] == 7);
@@ -228,6 +230,7 @@ void testeMudarTamanhoEstrutura()
     int vet[1];
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(2, -3) == NOVO_TAMANHO_INVALIDO);
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(2, -4) == NOVO_TAMANHO_INVALIDO);
+    printf("%d\n", modificarTamanhoEstruturaAuxiliar(11, 7) == POSICAO_INVALIDA);
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(0, 7) == POSICAO_INVALIDA);
     printf("%d\n", modificarTamanhoEstruturaAuxiliar(1, 7) == SEM_ESTRUTURA_AUXILIAR);
 
